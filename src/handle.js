@@ -1,5 +1,5 @@
-import { track } from "./track.js"
-import { trigger } from "./trigger.js"
+import { track } from "./collectUpdates/track.js"
+import { trigger } from "./collectUpdates/trigger.js"
 export function handle(){
     return {
         get(target,key){
