@@ -1,7 +1,15 @@
 import track from "../effect/track.js";
+import reactive from "../reactive.js";
+import { trackOpType } from "../contanst.js";
 
 const handleGet = (target, key) => {
-  console.log("拦截到了", target, key);
-  return Reflect.get(target, key);
+  track(target, key, trackOpType.GET);
+
+  const res = Reflect.get(target, key);
+  if (res instanceof Object) {
+    reactive(res);
+  }
+
+  return res;
 };
 export default handleGet;
